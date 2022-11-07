@@ -23,6 +23,7 @@ const Data = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(NewSchema) });
+  // const history = useHistory();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
   return (

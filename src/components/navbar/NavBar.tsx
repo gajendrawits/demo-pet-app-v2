@@ -8,8 +8,10 @@ import { LogoImg } from "../../style/NavBarStyle";
 import { NavText } from "../../style/NavBarStyle";
 import { TextWrap } from "../../style/NavBarStyle";
 import { AllImg } from "../../style/NavBarStyle";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <NavDiv>
       <LogoDiv>
@@ -19,8 +21,8 @@ const NavBar = () => {
         />
       </LogoDiv>
       <TextWrap>
-        <NavText>HOME</NavText>
-        <NavText>CATEGORIES</NavText>
+        <NavText onClick={() => navigate("/home")}>HOME</NavText>
+        <NavText onClick={() => navigate("/categories")}>CATEGORIES</NavText>
         <NavText>BLOG</NavText>
         <NavText>CONTACT</NavText>
       </TextWrap>

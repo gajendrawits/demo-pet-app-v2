@@ -11,6 +11,7 @@ import { RightDiv } from "../../style/HomePageStyle";
 import { InnerRightDiv } from "../../style/HomePageStyle";
 import { DogImg } from "../../style/HomePageStyle";
 import { SearchBtn } from "../../style/HomePageStyle";
+import Footer from "../footer/Footer";
 const HomePage = () => {
   return (
     <>
@@ -34,6 +35,7 @@ const HomePage = () => {
           </InnerRightDiv>
         </RightDiv>
       </MainHomeDiv>
+      <Footer />
     </>
   );
 };

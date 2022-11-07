@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const NavDiv = styled.div`
   border-bottom: 2px solid black;
+  /* width: 1440px; */
   width: 95%;
   height: 10vh;
   margin: auto;

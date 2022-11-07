@@ -7,5 +7,5 @@ export const NewSchema = yup.object().shape({
     .min(8)
     .max(30)
     .required()
-    .matches(/^(?! )[A-Za-z0-9\s]*$/, "Enter valid password"),
+    .matches(/^(?! )[A-Za-z0-9\s@]*$/, "Enter valid password"),
 });

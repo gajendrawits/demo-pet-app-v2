@@ -1,33 +1,56 @@
 import React, { useState, useEffect } from "react";
-// import Footer from "../footer/Footer";
+import ReactPaginate from "react-paginate";
+import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styled from "styled-components";
 // import Pets from "../categories/data/Data";
 import { PetsPara } from "../../style/CategoriesPageStyle";
+import axios from "axios";
 
 const ProductCart = () => {
   const [data, setData] = useState([]);
-  const getUsers = async () => {
-    const response = await fetch(
-      "https://petstore.swagger.io/v2/pet/findByStatus?status=available"
-    );
-    // console.log(data);
-    setData(await response.json());
+  const getApiData = async () => {
+    try {
+      const res = await axios.get(
+        "https://petstore.swagger.io/v2/pet/findByStatus?status=available"
+      );
+      // console.log(res.data);
+      setData(res.data);
+    } catch (error: any) {
+      // setIsError(error.message)
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
-    getUsers();
+    getApiData();
   }, []);
 
-  //   const newData = () => {
-  //     const filter = data.filter((elem: any) => {
-  //       return elem.tags[0]?.name !== "string";
-  //     });
-  //     console.log(filter);
-  //   };
+  const newData = data.slice(0, 500);
+  const [pageNumber, setPageNumber] = useState(0);
+  const dataPerPage = 8;
+  const pageVisited = pageNumber * dataPerPage;
+  const pageCount = Math.ceil(newData.length / dataPerPage);
+
+  const displayData = newData
+    .slice(pageVisited, pageVisited + dataPerPage)
+    .map((elem: any, ind: number) => {
+      return (
+        <PetsMap>
+          <PetsPara>{elem.name}</PetsPara>
+          <PetsMapImgContainer>
+            <PetMapImg src={elem.photoUrls} alt="" />
+          </PetsMapImgContainer>
+          <PetsPara>{elem.category.name}</PetsPara>
+        </PetsMap>
+      );
+    });
+  const changePage = ({ selected }: any) => {
+    setPageNumber(selected);
+  };
 
   return (
-    <>
+    <MainWrapper>
       <NavBar />
       <ProductWrapper>
         <ProductTop>
@@ -48,35 +71,58 @@ const ProductCart = () => {
             />
           </ProductAvatar>
           <h1>Dogs</h1>
-          {/* <button onClick={newData}>string</button> */}
         </ProductMid>
-        <ProductDown>
-          {data.map((elem: any, ind: number) => {
-            return (
-              <PetsMap>
-                <PetsMapImgContainer>
-                  {/* <PetMapImg src={elem.photoUrls} alt="" /> */}
-                </PetsMapImgContainer>
-                <PetsPara>{elem.name}</PetsPara>
-              </PetsMap>
-            );
-          })}
-        </ProductDown>
+        <ProductDown>{displayData}</ProductDown>
       </ProductWrapper>
-      {/* <Footer /> */}
-    </>
+
+      <ReactPaginate
+        previousLabel={"<<"}
+        nextLabel={">>"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationButtons"}
+        previousLinkClassName={"previousButtons"}
+        nextLinkClassName={"nextButtons"}
+        activeClassName={"activeButtons"}
+      />
+      <Footer />
+    </MainWrapper>
   );
 };
-
 export default ProductCart;
+export const MainWrapper = styled.div`
+  .paginationButtons {
+    width: 90%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  .paginationButtons a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #24292f;
+    color: #24292f;
+    cursor: pointer;
+  }
 
+  .paginationButtons a:hover {
+    color: white;
+    background-color: #24292f;
+  }
+
+  .activeButtons a {
+    color: white;
+    background-color: #24292f;
+  }
+`;
 export const ProductWrapper = styled.div`
   /* height: 100vh; */
 `;
 export const ProductTop = styled.div`
   display: flex;
   align-items: baseline;
-  /* border: 2px solid black; */
   width: 95%;
   margin: auto;
 `;
@@ -91,7 +137,6 @@ export const ProductAvatar = styled.div`
   height: 16vh;
 `;
 export const ProductDown = styled.div`
-  /* border: 2px solid black; */
   margin: auto;
   width: 80%;
   margin: auto;
@@ -109,16 +154,17 @@ export const PetsMap = styled.div`
   flex-grow: 1;
   align-self: stretch;
   width: 16vw;
-  height: 45vh;
+  height: 40vh;
   background-color: rgb(255, 240, 225);
   border-radius: 24px;
   :hover {
-    transform: scale(0.8);
-    transform: 1s;
+    transform: scale(1.1);
+    transition: 1s;
   }
 `;
 export const PetMapImg = styled.img`
-  width: 120px;
+  width: 12vw;
+  height: 20vh;
   margin-top: 12px;
 `;
 export const PetsMapImgContainer = styled.div``;

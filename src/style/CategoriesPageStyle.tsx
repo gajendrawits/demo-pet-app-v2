@@ -12,6 +12,7 @@ export const InnerCategoriesDiv = styled.div`
   justify-content: space-between;
   height: 60vh;
   width: 65vw;
+  gap: 10px;
   margin: auto;
 `;
 export const PetsNew = styled.div`
@@ -31,7 +32,7 @@ export const PetsPara = styled.p`
   white-space: pre-wrap;
   width: 120px;
   height: 26px;
-  margin: 15px;
+  margin: 5px;
   color: rgb(0, 9, 88);
   font-family: "Red Hat Display";
   font-weight: 700;

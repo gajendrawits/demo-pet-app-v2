@@ -9,24 +9,25 @@ import axios from "axios";
 
 const ProductCart = () => {
   const [data, setData] = useState([]);
+  // let status = "";
+
+  const changeStatus = (e: any) => {
+    let status = e.target.value;
+    axios
+      .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)
+      .then((res) => setData(res.data));
+  };
   const getApiData = async () => {
-    try {
-      const res = await axios.get(
-        "https://petstore.swagger.io/v2/pet/findByStatus?status=available"
-      );
-      // console.log(res.data);
-      setData(res.data);
-    } catch (error: any) {
-      // setIsError(error.message)
-      console.log(error.message);
-    }
+    await axios
+      .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=available`)
+      .then((res) => setData(res.data));
   };
 
   useEffect(() => {
     getApiData();
   }, []);
 
-  const newData = data.slice(0, 500);
+  const newData = data.slice(0, 200);
   const [pageNumber, setPageNumber] = useState(0);
   const dataPerPage = 8;
   const pageVisited = pageNumber * dataPerPage;
@@ -34,16 +35,20 @@ const ProductCart = () => {
 
   const displayData = newData
     .slice(pageVisited, pageVisited + dataPerPage)
+    // eslint-disable-next-line array-callback-return
     .map((elem: any, ind: number) => {
-      return (
-        <PetsMap>
-          <PetsPara>{elem.name}</PetsPara>
-          <PetsMapImgContainer>
-            <PetMapImg src={elem.photoUrls} alt="" />
-          </PetsMapImgContainer>
-          <PetsPara>{elem.category.name}</PetsPara>
-        </PetsMap>
-      );
+      if (elem.name === "doggie") {
+        return (
+          <PetsMap key={ind}>
+            <PetsPara>{elem.name}</PetsPara>
+            <PetsMapImgContainer>
+              <PetMapImg src={elem.photoUrls} alt="" />
+            </PetsMapImgContainer>
+            <PetsPara>{elem.category.name}</PetsPara>
+            <PetsPara>{elem.status}</PetsPara>
+          </PetsMap>
+        );
+      }
     });
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
@@ -55,7 +60,13 @@ const ProductCart = () => {
       <ProductWrapper>
         <ProductTop>
           <h1>Categories/</h1>
-          <h3>Dogs</h3>
+          <h3 style={{ marginRight: "20px" }}>Dogs</h3>
+          <select onChange={changeStatus}>
+            <option>--select--</option>
+            <option>available</option>
+            <option>pending</option>
+            <option>sold</option>
+          </select>
         </ProductTop>
         <ProductMid>
           <ProductAvatar>
@@ -70,7 +81,7 @@ const ProductCart = () => {
               alt=""
             />
           </ProductAvatar>
-          <h1>Dogs</h1>
+          <SelectOpt>Dogs</SelectOpt>
         </ProductMid>
         <ProductDown>{displayData}</ProductDown>
       </ProductWrapper>
@@ -120,13 +131,20 @@ export const MainWrapper = styled.div`
 export const ProductWrapper = styled.div`
   /* height: 100vh; */
 `;
+export const SelectOpt = styled.h1`
+  /* color: red; */
+  color: black;
+  margin: 2px;
+`;
 export const ProductTop = styled.div`
   display: flex;
   align-items: baseline;
   width: 95%;
   margin: auto;
 `;
-export const ProductMid = styled.div``;
+export const ProductMid = styled.div`
+  margin-bottom: 40px;
+`;
 export const ProductAvatar = styled.div`
   background-color: rgb(253, 231, 203);
   margin: auto;

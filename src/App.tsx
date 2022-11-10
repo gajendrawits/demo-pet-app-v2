@@ -7,7 +7,8 @@ import CategoriesPage from "./components/categories/CategoriesPage";
 import HomePage from "./components/homePage/HomePage";
 import ProductCart from "./components/productCart/ProductCart";
 import AddPet from "./components/addPet/AddPet";
-
+import FishData from "./components/productCart/FishData";
+import CatData from "./components/productCart/CatData";
 function App() {
   return (
     <div className="App">
@@ -31,10 +32,26 @@ function App() {
             }
           />
           <Route
-            path="categories/products"
+            path="products"
             element={
               <PrivateRouts>
                 <ProductCart />
+              </PrivateRouts>
+            }
+          />
+          <Route
+            path="fish"
+            element={
+              <PrivateRouts>
+                <FishData />
+              </PrivateRouts>
+            }
+          />
+          <Route
+            path="cats"
+            element={
+              <PrivateRouts>
+                <CatData />
               </PrivateRouts>
             }
           />

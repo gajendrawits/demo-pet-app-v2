@@ -17,6 +17,10 @@ export const AllInputs = styled.input`
   border: 1px solid black;
   padding-left: 4px;
 `;
+export const AddPetFormWraper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const SignUpBtn = styled.button`
   width: 31vw;
   height: 6vh;

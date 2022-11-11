@@ -1,58 +1,33 @@
 import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styled from "styled-components";
-// import Pets from "../categories/data/Data";
-import { PetsPara } from "../../style/CategoriesPageStyle";
 import axios from "axios";
+import DisplayDogsData from "../apiData/DogData";
+import CategoriesData from "../data/CategoriesData";
 
 const ProductCart = () => {
-  const [data, setData] = useState([]);
+  const [dogData, setDogData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   // let status = "";
 
   const changeStatus = (e: any) => {
     let status = e.target.value;
     axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)
-      .then((res) => setData(res.data));
+      .then((res) => setDogData(res.data));
+    setIsLoading(false);
   };
   const getApiData = async () => {
     await axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=available`)
-      .then((res) => setData(res.data));
+      .then((res) => setDogData(res.data));
+    setIsLoading(false);
   };
 
   useEffect(() => {
     getApiData();
   }, []);
-
-  const newData = data.slice(0, 200);
-  const [pageNumber, setPageNumber] = useState(0);
-  const dataPerPage = 8;
-  const pageVisited = pageNumber * dataPerPage;
-  const pageCount = Math.ceil(newData.length / dataPerPage);
-
-  const displayData = newData
-    .slice(pageVisited, pageVisited + dataPerPage)
-    // eslint-disable-next-line array-callback-return
-    .map((elem: any, ind: number) => {
-      if (elem.name === "doggie") {
-        return (
-          <PetsMap key={ind}>
-            <PetsPara>{elem.name}</PetsPara>
-            <PetsMapImgContainer>
-              <PetMapImg src={elem.photoUrls} alt="" />
-            </PetsMapImgContainer>
-            <PetsPara>{elem.category.name}</PetsPara>
-            <PetsPara>{elem.status}</PetsPara>
-          </PetsMap>
-        );
-      }
-    });
-  const changePage = ({ selected }: any) => {
-    setPageNumber(selected);
-  };
 
   return (
     <MainWrapper>
@@ -68,39 +43,23 @@ const ProductCart = () => {
             <option>sold</option>
           </select>
         </ProductTop>
-        <ProductMid>
-          <ProductAvatar>
-            <img
-              style={{
-                width: "6vw",
-                height: "14vh",
-                margin: "auto",
-                borderRadius: "50px",
-              }}
-              src="https://assets.api.uizard.io/api/cdn/stream/efcefdf9-a4f2-4390-9b73-33ac498f57d7.png"
-              alt=""
-            />
-          </ProductAvatar>
-          <SelectOpt>Dogs</SelectOpt>
-        </ProductMid>
-        <ProductDown>{displayData}</ProductDown>
+        <CategoriesData
+          name={"Dogs"}
+          imgsrc={
+            "https://assets.api.uizard.io/api/cdn/stream/efcefdf9-a4f2-4390-9b73-33ac498f57d7.png"
+          }
+        />
+        <ProductDown>
+          <DisplayDogsData data={dogData} isLoading={isLoading} />
+        </ProductDown>
       </ProductWrapper>
 
-      <ReactPaginate
-        previousLabel={"<<"}
-        nextLabel={">>"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"paginationButtons"}
-        previousLinkClassName={"previousButtons"}
-        nextLinkClassName={"nextButtons"}
-        activeClassName={"activeButtons"}
-      />
       <Footer />
     </MainWrapper>
   );
 };
 export default ProductCart;
+
 export const MainWrapper = styled.div`
   .paginationButtons {
     width: 90%;
@@ -128,8 +87,17 @@ export const MainWrapper = styled.div`
     background-color: #24292f;
   }
 `;
+export const SelectForStatus = styled.div`
+  position: relative;
+  font-family: Arial;
+`;
 export const ProductWrapper = styled.div`
   /* height: 100vh; */
+  overflow: hidden;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const SelectOpt = styled.h1`
   /* color: red; */
@@ -181,8 +149,24 @@ export const PetsMap = styled.div`
   }
 `;
 export const PetMapImg = styled.img`
-  width: 12vw;
-  height: 20vh;
   margin-top: 12px;
+  display: flex;
+  margin: 10px 0px;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 1;
+  flex-grow: 1;
+  align-self: stretch;
+  width: 15vw;
+  height: 28vh;
+  background-color: rgb(255, 240, 225);
+  border-radius: 44px;
 `;
-export const PetsMapImgContainer = styled.div``;
+export const PetsMapImgContainer = styled.div`
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  opacity: 1;
+  border: 0px;
+`;

@@ -7,7 +7,7 @@ import { HTop } from "../../style/HomePageStyle";
 import { MainCategoriesDiv } from "../../style/CategoriesPageStyle";
 import { InnerCategoriesDiv } from "../../style/CategoriesPageStyle";
 import { PetsNew } from "../../style/CategoriesPageStyle";
-import { PetsPara } from "../../style/CategoriesPageStyle";
+import { PetsCatePara } from "../../style/CategoriesPageStyle";
 import { PetImg } from "../../style/CategoriesPageStyle";
 import { PetsImgContainer } from "../../style/CategoriesPageStyle";
 
@@ -29,7 +29,7 @@ const CategoriesPage = () => {
           {Pets.map((elem, ind: number) => {
             return (
               <PetsNew key={ind} onClick={() => TempNav(ind)}>
-                <PetsPara>{elem.name}</PetsPara>
+                <PetsCatePara>{elem.name}</PetsCatePara>
                 <PetsImgContainer>
                   <PetImg src={elem.petImg} alt="" />
                 </PetsImgContainer>

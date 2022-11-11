@@ -3,22 +3,21 @@ import React, { useState, useEffect } from "react";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 // import Pets from "../categories/data/Data";
-import { PetsPara } from "../../style/CategoriesPageStyle";
+import DisplayCatsData from "../apiData/CatMapData";
 import axios from "axios";
 import {
   MainWrapper,
-  PetMapImg,
-  PetsMap,
-  PetsMapImgContainer,
   ProductAvatar,
   ProductDown,
   ProductMid,
   ProductTop,
   ProductWrapper,
 } from "./ProductCart";
+import CategoriesData from "../data/CategoriesData";
 
 const CatData = () => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const getApiData = async () => {
     try {
       const res = await axios.get(
@@ -26,6 +25,7 @@ const CatData = () => {
       );
       // console.log(res.data);
       setData(res.data);
+      setIsLoading(false);
     } catch (error: any) {
       // setIsError(error.message)
       console.log(error.message);
@@ -36,21 +36,6 @@ const CatData = () => {
     getApiData();
   }, []);
 
-  // eslint-disable-next-line array-callback-return
-  const displayFishData = data.map((elem: any) => {
-    if (elem.name === "cat") {
-      return (
-        <PetsMap>
-          <PetsPara key={elem.id}>{elem.name}</PetsPara>
-          <PetsMapImgContainer>
-            <PetMapImg src={elem.photoUrls} alt="" />
-          </PetsMapImgContainer>
-          <PetsPara>{elem.category.name}</PetsPara>
-        </PetsMap>
-      );
-    }
-  });
-
   return (
     <MainWrapper>
       <NavBar />
@@ -59,22 +44,16 @@ const CatData = () => {
           <h1>Categories/</h1>
           <h3>Cats</h3>
         </ProductTop>
-        <ProductMid>
-          <ProductAvatar>
-            <img
-              style={{
-                width: "6vw",
-                height: "14vh",
-                margin: "auto",
-                borderRadius: "50px",
-              }}
-              src="https://assets.api.uizard.io/api/cdn/stream/d605c802-3ca9-4328-a230-eb8b90d6d934.png"
-              alt=""
-            />
-          </ProductAvatar>
-          <h1>Cats</h1>
-        </ProductMid>
-        <ProductDown>{displayFishData}</ProductDown>
+        <CategoriesData
+          name={"Cats"}
+          imgsrc={
+            "https://assets.api.uizard.io/api/cdn/stream/d605c802-3ca9-4328-a230-eb8b90d6d934.png"
+          }
+        />
+        <ProductDown>
+          <DisplayCatsData data={data} isLoading={isLoading} />
+          {/* {displayCatData} */}
+        </ProductDown>
       </ProductWrapper>
       <Footer />
     </MainWrapper>

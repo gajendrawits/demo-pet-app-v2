@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import ReactPaginate from "react-paginate";
-// import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
-// import Pets from "../categories/data/Data";
 import axios from "axios";
 import {
   MainWrapper,
@@ -13,6 +10,7 @@ import {
 } from "./ProductCart";
 import DisplayFishData from "../apiData/NewData";
 import CategoriesData from "../data/CategoriesData";
+import Footer from "../footer/Footer";
 
 const FishData = () => {
   const [data, setData] = useState([]);
@@ -62,6 +60,7 @@ const FishData = () => {
           <DisplayFishData data={data} isLoading={isLoading} />
         </ProductDown>
       </ProductWrapper>
+      <Footer />
     </MainWrapper>
   );
 };

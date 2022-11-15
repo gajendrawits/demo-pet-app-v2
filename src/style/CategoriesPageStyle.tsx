@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MainCategoriesDiv = styled.div`
   height: 80vh;
+  width: 100%;
 `;
 export const InnerCategoriesDiv = styled.div`
   display: grid;
@@ -28,7 +29,8 @@ export const PetsNew = styled.div`
 export const PetsStatus = styled.p`
   overflow: hidden;
   white-space: pre-wrap;
-  width: 174px;
+  padding-top: 6px;
+  width: 100px;
   height: 18px;
   margin: 0px;
   color: green;
@@ -59,6 +61,8 @@ export const PetsCatePara = styled.p`
 `;
 export const PetsPara = styled.p`
   overflow: hidden;
+  /* list-style: none; */
+  padding-top: 6px;
   white-space: pre-wrap;
   width: 174px;
   height: 18px;
@@ -79,17 +83,32 @@ export const PetImg = styled.img`
   margin-top: 12px;
 `;
 export const PetsImgContainer = styled.div``;
-// export const AddNewButton = styled.div`
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: rgb(236, 169, 102);
-//   top: 20px;
-//   right: 20px;
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   padding: 5px;
-//   cursor: pointer;
-// `;
+export const BuyNow = styled.div`
+  width: 6vw;
+  cursor: pointer;
+  background-color: rgb(255, 250, 245);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+`;
+export const PetDetails = styled.div`
+  display: flex;
+  width: 14vw;
+  height: 5vh;
+`;
+export const PetDetailsLeft = styled.div`
+  width: 14vw;
+  display: flex;
+`;
+export const DelPet = styled.div`
+  display: flex;
+  /* border: 2px solid black; */
+  margin: auto;
+  justify-content: center;
+`;
+export const CartItemName = styled.p`
+  color: Brown;
+  /* margin-left: 1vw; */
+  margin-right: 10vw;
+`;

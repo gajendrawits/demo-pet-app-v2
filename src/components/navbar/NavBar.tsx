@@ -28,8 +28,14 @@ const NavBar = () => {
       </TextWrap>
       <AllImg>
         <ImSearch style={{ fontSize: "2vw", cursor: "pointer" }} />
-        <FaShoppingCart style={{ fontSize: "2vw", cursor: "pointer" }} />
-        <CgProfile style={{ fontSize: "2vw", cursor: "pointer" }} />
+        <FaShoppingCart
+          onClick={() => navigate("/cart")}
+          style={{ fontSize: "2vw", cursor: "pointer" }}
+        />
+        <CgProfile
+          onClick={() => navigate("/")}
+          style={{ fontSize: "2vw", cursor: "pointer" }}
+        />
       </AllImg>
     </NavDiv>
   );

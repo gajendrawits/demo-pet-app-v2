@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-const Loader = () => {
+
+const LoaderII = () => {
   return (
-    <div style={{ width: "100%", height: "80vh", marginTop: "40vh" }}>
-      <Loaders />
+    <div style={{ width: "100%", marginTop: "10vh", marginLeft: "19vw" }}>
+      <LoadersII />
     </div>
   );
 };
 
-export default Loader;
-export const Loaders = styled.div`
+export default LoaderII;
+export const LoadersII = styled.div`
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;

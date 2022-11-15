@@ -9,6 +9,8 @@ import ProductCart from "./components/productCart/ProductCart";
 import AddPet from "./components/addPet/AddPet";
 import FishData from "./components/productCart/FishData";
 import CatData from "./components/productCart/CatData";
+import SingleProduct from "./components/productCart/SingleProduct";
+import Cart from "./components/cart/Cart";
 function App() {
   return (
     <div className="App">
@@ -60,6 +62,22 @@ function App() {
             element={
               <PrivateRouts>
                 <AddPet />
+              </PrivateRouts>
+            }
+          />
+          <Route
+            path="/singleProduct/:id"
+            element={
+              <PrivateRouts>
+                <SingleProduct />
+              </PrivateRouts>
+            }
+          />
+          <Route
+            path="cart"
+            element={
+              <PrivateRouts>
+                <Cart />
               </PrivateRouts>
             }
           />

@@ -7,9 +7,7 @@ import DisplayCatsData from "../apiData/CatMapData";
 import axios from "axios";
 import {
   MainWrapper,
-  ProductAvatar,
   ProductDown,
-  ProductMid,
   ProductTop,
   ProductWrapper,
 } from "./ProductCart";

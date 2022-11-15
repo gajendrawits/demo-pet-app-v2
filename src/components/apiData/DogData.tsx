@@ -1,6 +1,12 @@
 import React from "react";
-import Loader from "../../loader/Loader";
-import { PetsPara, PetsStatus } from "../../style/CategoriesPageStyle";
+import { NavLink } from "react-router-dom";
+import LoaderII from "../../loader/LoaderII";
+import {
+  PetDetails,
+  PetDetailsLeft,
+  PetsPara,
+  PetsStatus,
+} from "../../style/CategoriesPageStyle";
 import {
   PetMapImg,
   PetsMap,
@@ -8,22 +14,30 @@ import {
 } from "../productCart/ProductCart";
 
 const DisplayDogsData = ({ data, isLoading }: any) => {
-  // .slice(pageVisited, pageVisited + dataPerPage)
   return isLoading ? (
-    <Loader />
+    <LoaderII />
   ) : (
     <>
       {data.map((elem: any, ind: number) => {
         if (elem.name === "doggie") {
           return (
-            <PetsMap key={ind}>
-              <PetsPara>{elem.name}</PetsPara>
-              <PetsMapImgContainer>
-                <PetMapImg src={elem.photoUrls} alt="" />
-              </PetsMapImgContainer>
-              <PetsPara>{elem.category?.name}</PetsPara>
-              <PetsStatus>{elem.status}</PetsStatus>
-            </PetsMap>
+            <NavLink
+              to={`/singleProduct/${elem.id}`}
+              style={{ listStyle: "none" }}
+            >
+              <PetsMap key={elem.id}>
+                <PetsPara>{elem.name}</PetsPara>
+                <PetsMapImgContainer>
+                  <PetMapImg src={elem.photoUrls} alt="" />
+                </PetsMapImgContainer>
+                <PetDetails>
+                  <PetDetailsLeft>
+                    <PetsPara>{elem.category?.name}</PetsPara>
+                    <PetsStatus>{elem.status}</PetsStatus>
+                  </PetDetailsLeft>
+                </PetDetails>
+              </PetsMap>
+            </NavLink>
           );
         }
       })}

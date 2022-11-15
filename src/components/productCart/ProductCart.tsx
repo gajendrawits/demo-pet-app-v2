@@ -9,7 +9,6 @@ import CategoriesData from "../data/CategoriesData";
 const ProductCart = () => {
   const [dogData, setDogData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // let status = "";
 
   const changeStatus = (e: any) => {
     let status = e.target.value;
@@ -60,32 +59,11 @@ const ProductCart = () => {
 };
 export default ProductCart;
 
-export const MainWrapper = styled.div`
-  .paginationButtons {
-    width: 90%;
-    height: 40px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  .paginationButtons a {
-    padding: 10px;
-    margin: 8px;
-    border-radius: 5px;
-    border: 1px solid #24292f;
-    color: #24292f;
-    cursor: pointer;
-  }
-
-  .paginationButtons a:hover {
-    color: white;
-    background-color: #24292f;
-  }
-
-  .activeButtons a {
-    color: white;
-    background-color: #24292f;
-  }
+export const MainWrapper = styled.div``;
+export const CategoriesAPI = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 export const SelectForStatus = styled.div`
   position: relative;
@@ -140,7 +118,7 @@ export const PetsMap = styled.div`
   flex-grow: 1;
   align-self: stretch;
   width: 16vw;
-  height: 40vh;
+  height: 41vh;
   background-color: rgb(255, 240, 225);
   border-radius: 24px;
   :hover {
@@ -169,4 +147,45 @@ export const PetsMapImgContainer = styled.div`
   border-radius: 12px;
   opacity: 1;
   border: 0px;
+`;
+export const CategoriesDisplay = styled.div`
+  /* display: flex; */
+  /* flex-direction: row; */
+  width: 80vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+`;
+export const CategoriesPaginate = styled.div`
+  .paginationButtons {
+    width: 95%;
+    height: 60px;
+    margin-top: 40px;
+    /* margin: auto; */
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid black; */
+  }
+  .paginationButtons a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #24292f;
+    color: #24292f;
+    cursor: pointer;
+    /* border: 2px solid black; */
+  }
+
+  .paginationButtons a:hover {
+    color: white;
+    background-color: #24292f;
+    /* border: 2px solid black; */
+  }
+
+  .activeButtons a {
+    color: white;
+    background-color: #24292f;
+    border: 2px solid black;
+  }
 `;

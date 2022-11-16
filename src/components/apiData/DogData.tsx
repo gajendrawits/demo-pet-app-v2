@@ -1,17 +1,17 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import LoaderII from "../../loader/LoaderII";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import LoaderII from '../../loader/LoaderII'
 import {
   PetDetails,
   PetDetailsLeft,
   PetsPara,
   PetsStatus,
-} from "../../style/CategoriesPageStyle";
+} from '../../style/CategoriesPageStyle'
 import {
   PetMapImg,
   PetsMap,
   PetsMapImgContainer,
-} from "../productCart/ProductCart";
+} from '../productCart/ProductCart'
 
 const DisplayDogsData = ({ data, isLoading }: any) => {
   return isLoading ? (
@@ -19,13 +19,14 @@ const DisplayDogsData = ({ data, isLoading }: any) => {
   ) : (
     <>
       {data.map((elem: any, ind: number) => {
-        if (elem.name === "doggie") {
+        if (elem.name === 'doggie') {
           return (
             <NavLink
+              key={ind}
               to={`/singleProduct/${elem.id}`}
-              style={{ listStyle: "none" }}
+              style={{ listStyle: 'none' }}
             >
-              <PetsMap key={elem.id}>
+              <PetsMap>
                 <PetsPara>{elem.name}</PetsPara>
                 <PetsMapImgContainer>
                   <PetMapImg src={elem.photoUrls} alt="" />
@@ -38,10 +39,10 @@ const DisplayDogsData = ({ data, isLoading }: any) => {
                 </PetDetails>
               </PetsMap>
             </NavLink>
-          );
+          )
         }
       })}
     </>
-  );
-};
-export default DisplayDogsData;
+  )
+}
+export default DisplayDogsData

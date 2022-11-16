@@ -1,17 +1,20 @@
-import React from "react";
-import { ImSearch } from "react-icons/im";
-import { FaShoppingCart } from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
-import { NavDiv } from "../../style/NavBarStyle";
-import { LogoDiv } from "../../style/NavBarStyle";
-import { LogoImg } from "../../style/NavBarStyle";
-import { NavText } from "../../style/NavBarStyle";
-import { TextWrap } from "../../style/NavBarStyle";
-import { AllImg } from "../../style/NavBarStyle";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { IoMdAddCircleOutline } from 'react-icons/io'
+import { FaShoppingCart } from 'react-icons/fa'
+import { CgProfile } from 'react-icons/cg'
+import { NavDiv } from '../../style/NavBarStyle'
+import { LogoDiv } from '../../style/NavBarStyle'
+import { LogoImg } from '../../style/NavBarStyle'
+import { NavText } from '../../style/NavBarStyle'
+import { CartCount } from '../../style/NavBarStyle'
+import { TextWrap } from '../../style/NavBarStyle'
+import { AllImg } from '../../style/NavBarStyle'
+import { useNavigate } from 'react-router-dom'
+import { useCartContext } from '../../context/cartcontext'
 
 const NavBar = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const { cart } = useCartContext()
   return (
     <NavDiv>
       <LogoDiv>
@@ -21,24 +24,25 @@ const NavBar = () => {
         />
       </LogoDiv>
       <TextWrap>
-        <NavText onClick={() => navigate("/home")}>HOME</NavText>
-        <NavText onClick={() => navigate("/categories")}>CATEGORIES</NavText>
+        <NavText onClick={() => navigate('/home')}>HOME</NavText>
+        <NavText onClick={() => navigate('/categories')}>CATEGORIES</NavText>
         <NavText>BLOG</NavText>
         <NavText>CONTACT</NavText>
       </TextWrap>
       <AllImg>
-        <ImSearch style={{ fontSize: "2vw", cursor: "pointer" }} />
+        <IoMdAddCircleOutline style={{ fontSize: '2vw', cursor: 'pointer' }} />
         <FaShoppingCart
-          onClick={() => navigate("/cart")}
-          style={{ fontSize: "2vw", cursor: "pointer" }}
+          onClick={() => navigate('/cart')}
+          style={{ fontSize: '2vw', cursor: 'pointer' }}
         />
+        <CartCount>{cart.length}</CartCount>
         <CgProfile
-          onClick={() => navigate("/")}
-          style={{ fontSize: "2vw", cursor: "pointer" }}
+          onClick={() => navigate('/')}
+          style={{ fontSize: '2vw', cursor: 'pointer' }}
         />
       </AllImg>
     </NavDiv>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

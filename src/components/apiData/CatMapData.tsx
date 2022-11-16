@@ -1,11 +1,11 @@
-import React from "react";
-import Loader from "../../loader/Loader";
-import { PetsPara, PetsStatus } from "../../style/CategoriesPageStyle";
+import React from 'react'
+import Loader from '../../loader/Loader'
+import { PetsPara, PetsStatus } from '../../style/CategoriesPageStyle'
 import {
   PetMapImg,
   PetsMap,
   PetsMapImgContainer,
-} from "../productCart/ProductCart";
+} from '../productCart/ProductCart'
 
 const DisplayCatsData = ({ data, isLoading }: any) => {
   // .slice(pageVisited, pageVisited + dataPerPage)
@@ -14,7 +14,7 @@ const DisplayCatsData = ({ data, isLoading }: any) => {
   ) : (
     <>
       {data.map((elem: any, ind: number) => {
-        if (elem.name === "cat") {
+        if (elem.name === 'cat') {
           return (
             <PetsMap key={ind}>
               <PetsPara>{elem.name}</PetsPara>
@@ -24,10 +24,10 @@ const DisplayCatsData = ({ data, isLoading }: any) => {
               <PetsPara>{elem.category?.name}</PetsPara>
               <PetsStatus>{elem.status}</PetsStatus>
             </PetsMap>
-          );
+          )
         }
       })}
     </>
-  );
-};
-export default DisplayCatsData;
+  )
+}
+export default DisplayCatsData

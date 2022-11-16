@@ -1,13 +1,13 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import LoaderII from "../../loader/LoaderII";
-import { PetsPara, PetsStatus } from "../../style/CategoriesPageStyle";
-import { PetDetails, PetDetailsLeft } from "../../style/CategoriesPageStyle";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import LoaderII from '../../loader/LoaderII'
+import { PetsPara, PetsStatus } from '../../style/CategoriesPageStyle'
+import { PetDetails, PetDetailsLeft } from '../../style/CategoriesPageStyle'
 import {
   PetMapImg,
   PetsMap,
   PetsMapImgContainer,
-} from "../productCart/ProductCart";
+} from '../productCart/ProductCart'
 
 const DisplayFishData = ({ data, isLoading }: any) => {
   // const myName = useProductContext();
@@ -16,13 +16,14 @@ const DisplayFishData = ({ data, isLoading }: any) => {
   ) : (
     <>
       {data.map((elem: any, ind: number) => {
-        if (elem.name === "fish") {
+        if (elem.name === 'fish') {
           return (
             <NavLink
+              key={ind}
               to={`/singleProduct/${elem.id}`}
-              style={{ listStyle: "none" }}
+              style={{ listStyle: 'none' }}
             >
-              <PetsMap key={ind}>
+              <PetsMap>
                 <PetsPara>{elem.name}</PetsPara>
                 <PetsMapImgContainer>
                   <PetMapImg src={elem.photoUrls} alt="" />
@@ -35,11 +36,11 @@ const DisplayFishData = ({ data, isLoading }: any) => {
                 </PetDetails>
               </PetsMap>
             </NavLink>
-          );
+          )
         }
       })}
     </>
-  );
-};
+  )
+}
 
-export default DisplayFishData;
+export default DisplayFishData

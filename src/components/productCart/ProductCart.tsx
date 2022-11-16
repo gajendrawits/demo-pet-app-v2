@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react";
-import Footer from "../footer/Footer";
-import NavBar from "../navbar/NavBar";
-import styled from "styled-components";
-import axios from "axios";
-import DisplayDogsData from "../apiData/DogData";
-import CategoriesData from "../data/CategoriesData";
+import React, { useState, useEffect } from 'react'
+import Footer from '../footer/Footer'
+import NavBar from '../navbar/NavBar'
+import styled from 'styled-components'
+import axios from 'axios'
+import DisplayDogsData from '../apiData/DogData'
+import CategoriesData from '../data/CategoriesData'
 
 const ProductCart = () => {
-  const [dogData, setDogData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [dogData, setDogData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const changeStatus = (e: any) => {
-    let status = e.target.value;
+    let status = e.target.value
     axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`)
-      .then((res) => setDogData(res.data));
-    setIsLoading(false);
-  };
+      .then((res) => setDogData(res.data))
+    setIsLoading(false)
+  }
   const getApiData = async () => {
     await axios
       .get(`https://petstore.swagger.io/v2/pet/findByStatus?status=available`)
-      .then((res) => setDogData(res.data));
-    setIsLoading(false);
-  };
+      .then((res) => setDogData(res.data))
+    setIsLoading(false)
+  }
 
   useEffect(() => {
-    getApiData();
-  }, []);
+    getApiData()
+  }, [])
 
   return (
     <MainWrapper>
@@ -34,7 +34,7 @@ const ProductCart = () => {
       <ProductWrapper>
         <ProductTop>
           <h1>Categories/</h1>
-          <h3 style={{ marginRight: "20px" }}>Dogs</h3>
+          <h3 style={{ marginRight: '20px' }}>Dogs</h3>
           <select onChange={changeStatus}>
             <option>--select--</option>
             <option>available</option>
@@ -43,9 +43,9 @@ const ProductCart = () => {
           </select>
         </ProductTop>
         <CategoriesData
-          name={"Dogs"}
+          name={'Dogs'}
           imgsrc={
-            "https://assets.api.uizard.io/api/cdn/stream/efcefdf9-a4f2-4390-9b73-33ac498f57d7.png"
+            'https://assets.api.uizard.io/api/cdn/stream/efcefdf9-a4f2-4390-9b73-33ac498f57d7.png'
           }
         />
         <ProductDown>
@@ -55,20 +55,20 @@ const ProductCart = () => {
 
       <Footer />
     </MainWrapper>
-  );
-};
-export default ProductCart;
+  )
+}
+export default ProductCart
 
-export const MainWrapper = styled.div``;
+export const MainWrapper = styled.div``
 export const CategoriesAPI = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-`;
+`
 export const SelectForStatus = styled.div`
   position: relative;
   font-family: Arial;
-`;
+`
 export const ProductWrapper = styled.div`
   /* height: 100vh; */
   overflow: hidden;
@@ -76,21 +76,21 @@ export const ProductWrapper = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-`;
+`
 export const SelectOpt = styled.h1`
   /* color: red; */
   color: black;
   margin: 2px;
-`;
+`
 export const ProductTop = styled.div`
   display: flex;
   align-items: baseline;
   width: 95%;
   margin: auto;
-`;
+`
 export const ProductMid = styled.div`
   margin-bottom: 40px;
-`;
+`
 export const ProductAvatar = styled.div`
   background-color: rgb(253, 231, 203);
   margin: auto;
@@ -99,7 +99,7 @@ export const ProductAvatar = styled.div`
   align-items: center;
   width: 8vw;
   height: 16vh;
-`;
+`
 export const ProductDown = styled.div`
   margin: auto;
   width: 80%;
@@ -108,10 +108,10 @@ export const ProductDown = styled.div`
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto auto auto auto;
-`;
+`
 export const PetsMap = styled.div`
   display: flex;
-  margin: 10px 0px;
+  margin: 60px 0px;
   flex-direction: column;
   align-items: center;
   flex-shrink: 1;
@@ -125,7 +125,7 @@ export const PetsMap = styled.div`
     transform: scale(1.1);
     transition: 1s;
   }
-`;
+`
 export const PetMapImg = styled.img`
   margin-top: 12px;
   display: flex;
@@ -139,7 +139,7 @@ export const PetMapImg = styled.img`
   height: 28vh;
   background-color: rgb(255, 240, 225);
   border-radius: 44px;
-`;
+`
 export const PetsMapImgContainer = styled.div`
   background-position: center center;
   background-size: cover;
@@ -147,7 +147,7 @@ export const PetsMapImgContainer = styled.div`
   border-radius: 12px;
   opacity: 1;
   border: 0px;
-`;
+`
 export const CategoriesDisplay = styled.div`
   /* display: flex; */
   /* flex-direction: row; */
@@ -155,7 +155,7 @@ export const CategoriesDisplay = styled.div`
   margin: auto;
   display: grid;
   grid-template-columns: auto auto auto auto;
-`;
+`
 export const CategoriesPaginate = styled.div`
   .paginationButtons {
     width: 95%;
@@ -188,4 +188,4 @@ export const CategoriesPaginate = styled.div`
     background-color: #24292f;
     border: 2px solid black;
   }
-`;
+`

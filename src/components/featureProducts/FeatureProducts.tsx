@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
-import { NavLink } from "react-router-dom";
-import { useProductContext } from "../../context/productcontext";
-import Loader from "../../loader/Loader";
-import { MainHomeDiv } from "../../style/HomePageStyle";
-import { LeftDiv } from "../../style/HomePageStyle";
-import { InnerLeftDiv } from "../../style/HomePageStyle";
-import { HTop } from "../../style/HomePageStyle";
-import { Para } from "../../style/HomePageStyle";
-import { SearchInput } from "../../style/HomePageStyle";
-import { RightDiv } from "../../style/HomePageStyle";
-import { InnerRightDiv } from "../../style/HomePageStyle";
-import { DogImg } from "../../style/HomePageStyle";
-import { SearchBtn } from "../../style/HomePageStyle";
+import React, { useState } from 'react'
+import ReactPaginate from 'react-paginate'
+import { NavLink } from 'react-router-dom'
+import { useProductContext } from '../../context/productcontext'
+import Loader from '../../loader/Loader'
+import { MainHomeDiv } from '../../style/HomePageStyle'
+import { LeftDiv } from '../../style/HomePageStyle'
+import { InnerLeftDiv } from '../../style/HomePageStyle'
+import { HTop } from '../../style/HomePageStyle'
+import { Para } from '../../style/HomePageStyle'
+import { SearchInput } from '../../style/HomePageStyle'
+import { RightDiv } from '../../style/HomePageStyle'
+import { InnerRightDiv } from '../../style/HomePageStyle'
+import { DogImg } from '../../style/HomePageStyle'
+import { SearchBtn } from '../../style/HomePageStyle'
 import {
   PetDetails,
   PetDetailsLeft,
   PetsPara,
   PetsStatus,
-} from "../../style/CategoriesPageStyle";
+} from '../../style/CategoriesPageStyle'
 import {
   PetMapImg,
   PetsMap,
@@ -26,38 +26,38 @@ import {
   CategoriesDisplay,
   CategoriesAPI,
   CategoriesPaginate,
-} from "../productCart/ProductCart";
+} from '../productCart/ProductCart'
 
 const FeatureProducts = () => {
-  const [q, setQ] = useState("");
-  const [searchParam] = useState(["name"]);
-  const { isLoading, featureProducts } = useProductContext();
-  const newData = featureProducts.slice(0, 1000);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [q, setQ] = useState('')
+  const [searchParam] = useState(['name'])
+  const { isLoading, featureProducts } = useProductContext()
+  const newData = featureProducts.slice(0, 1000)
+  const [pageNumber, setPageNumber] = useState(0)
 
-  const userPerPage = 4;
+  const userPerPage = 4
 
-  const pageVisited = pageNumber * userPerPage;
+  const pageVisited = pageNumber * userPerPage
 
-  const pageCount = Math.ceil(newData.length / userPerPage);
+  const pageCount = Math.ceil(newData.length / userPerPage)
 
   function search(newData: any) {
     return newData.filter((elem: any) => {
       return searchParam.some((newElem: any) => {
         return (
           elem[newElem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
-        );
-      });
-    });
+        )
+      })
+    })
   }
 
   const displayUsers = search(newData)
     .slice(pageVisited, pageVisited + userPerPage)
-    .map((elem: any) => {
+    .map((elem: any, index: number) => {
       return (
-        <NavLink to={`/singleProduct/${elem.id}`} style={{ listStyle: "none" }}>
-          <PetsMap key={elem.id}>
-            <PetsPara>{elem.name}</PetsPara>
+        <NavLink key={index} to={`/singleProduct/${elem.id}`}>
+          <PetsMap>
+            <PetsPara>Name: {elem.name}</PetsPara>
             <PetsMapImgContainer>
               <PetMapImg src={elem.photoUrls} alt="" />
             </PetsMapImgContainer>
@@ -70,15 +70,15 @@ const FeatureProducts = () => {
             </PetDetails>
           </PetsMap>
         </NavLink>
-      );
-    });
+      )
+    })
 
   const changePage = ({ selected }: any) => {
-    setPageNumber(selected);
-  };
+    setPageNumber(selected)
+  }
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader />
   }
   return (
     <CategoriesAPI>
@@ -109,20 +109,20 @@ const FeatureProducts = () => {
       <CategoriesPaginate>
         <ReactPaginate
           //previous page
-          previousLabel={"<<"}
+          previousLabel={'<<'}
           //next page
-          nextLabel={">>"}
+          nextLabel={'>>'}
           //total page
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"paginationButtons"}
-          previousLinkClassName={"previousButtons"}
-          nextLinkClassName={"nextButtons"}
-          activeClassName={"activeButtons"}
+          containerClassName={'paginationButtons'}
+          previousLinkClassName={'previousButtons'}
+          nextLinkClassName={'nextButtons'}
+          activeClassName={'activeButtons'}
         />
       </CategoriesPaginate>
     </CategoriesAPI>
-  );
-};
+  )
+}
 
-export default FeatureProducts;
+export default FeatureProducts

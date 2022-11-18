@@ -1,18 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const MainDiv = styled.div`
   width: 30vw;
-  height: 75vh;
+  height: 79vh;
   border-radius: 20px;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-`;
+`
 export const Container = styled.div`
+  /* border: 2px solid black; */
+  margin: auto;
   display: flex;
-  height: 658px;
+  height: 700px;
   justify-content: center;
   align-items: center;
-`;
+`
 export const AllInputs = styled.input`
   width: 20vw;
   height: 6vh;
@@ -23,13 +25,13 @@ export const AllInputs = styled.input`
   :focus {
     outline: none;
   }
-`;
+`
 export const Errors = styled.p`
   color: red;
-`;
+`
 export const InputBox = styled.div`
   height: 12vh;
-`;
+`
 export const Btn = styled.button`
   background: red;
   width: 20vw;
@@ -43,7 +45,7 @@ export const Btn = styled.button`
     background-color: #901a1a;
     transition: 0.1s;
   }
-`;
+`
 export const SignBtn = styled.button`
   margin-top: 10vh;
   border: none;
@@ -58,4 +60,4 @@ export const SignBtn = styled.button`
     background-color: #056ea7;
     transition: 0.1s;
   }
-`;
+`

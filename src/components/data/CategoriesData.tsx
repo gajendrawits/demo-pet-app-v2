@@ -1,16 +1,20 @@
-import React from "react";
-import { ProductAvatar, ProductMid } from "../productCart/ProductCart";
+import React from 'react'
+import {
+  AvatarImg,
+  ProductAvatar,
+  ProductMid,
+} from '../productCart/ProductCart'
 
 const CategoriesData = ({ name, imgsrc }: any) => {
   return (
     <ProductMid>
       <ProductAvatar>
-        <img
+        <AvatarImg
           style={{
-            width: "6vw",
-            height: "14vh",
-            margin: "auto",
-            borderRadius: "50px",
+            width: '6vw',
+            height: '14vh',
+            margin: 'auto',
+            borderRadius: '50px',
           }}
           src={imgsrc}
           alt=""
@@ -18,7 +22,7 @@ const CategoriesData = ({ name, imgsrc }: any) => {
       </ProductAvatar>
       <h1>{name}</h1>
     </ProductMid>
-  );
-};
+  )
+}
 
-export default CategoriesData;
+export default CategoriesData

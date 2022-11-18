@@ -10,13 +10,18 @@ export const NavDiv = styled.div`
   /* justify-content: flex-start; */
 `
 export const LogoDiv = styled.div`
-  /* border: 1px solid black; */
+  cursor: pointer;
   width: 6vw;
   height: 10vh;
+  :hover {
+    transform: scale(1.1);
+    transition: 1s;
+  }
+  /* transform: 1px; */
 `
 export const LogoImg = styled.img`
   width: 3vw;
-  margin: 10px 0px;
+  margin: 20px 0px;
 `
 export const NavText = styled.span`
   margin-top: 25px;
@@ -24,6 +29,12 @@ export const NavText = styled.span`
   color: rgb(0, 9, 88);
   font-weight: 600;
   cursor: pointer;
+  :hover {
+    transform: scale(1.1);
+    /* transition: 1s; */
+    transition: 0.1s;
+    font-weight: 700;
+  }
 `
 export const TextWrap = styled.div`
   /* border: 2px solid black; */

@@ -1,6 +1,12 @@
 import React from 'react'
-import Loader from '../../loader/Loader'
-import { PetsPara, PetsStatus } from '../../style/CategoriesPageStyle'
+import { NavLink } from 'react-router-dom'
+import LoaderII from '../../loader/LoaderII'
+import {
+  PetDetails,
+  PetDetailsLeft,
+  PetsPara,
+  PetsStatus,
+} from '../../style/CategoriesPageStyle'
 import {
   PetMapImg,
   PetsMap,
@@ -10,20 +16,31 @@ import {
 const DisplayCatsData = ({ data, isLoading }: any) => {
   // .slice(pageVisited, pageVisited + dataPerPage)
   return isLoading ? (
-    <Loader />
+    <LoaderII />
   ) : (
     <>
       {data.map((elem: any, ind: number) => {
         if (elem.name === 'cat') {
           return (
-            <PetsMap key={ind}>
-              <PetsPara>{elem.name}</PetsPara>
-              <PetsMapImgContainer>
-                <PetMapImg src={elem.photoUrls} alt="" />
-              </PetsMapImgContainer>
-              <PetsPara>{elem.category?.name}</PetsPara>
-              <PetsStatus>{elem.status}</PetsStatus>
-            </PetsMap>
+            <NavLink
+              key={ind}
+              to={`/singleProduct/${elem.id}`}
+              style={{ listStyle: 'none' }}
+              className="linkStyle"
+            >
+              <PetsMap>
+                <PetsPara>Name: {elem.name}</PetsPara>
+                <PetsMapImgContainer>
+                  <PetMapImg src={elem.photoUrls} alt="" />
+                </PetsMapImgContainer>
+                <PetDetails>
+                  <PetDetailsLeft>
+                    <PetsPara>{elem.category?.name}</PetsPara>
+                    <PetsStatus>{elem.status}</PetsStatus>
+                  </PetDetailsLeft>
+                </PetDetails>
+              </PetsMap>
+            </NavLink>
           )
         }
       })}

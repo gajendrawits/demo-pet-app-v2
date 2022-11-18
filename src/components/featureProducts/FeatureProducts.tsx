@@ -32,17 +32,17 @@ const FeatureProducts = () => {
   const [q, setQ] = useState('')
   const [searchParam] = useState(['name'])
   const { isLoading, featureProducts } = useProductContext()
-  const newData = featureProducts.slice(0, 1000)
+  // const newData = featureProducts.slice(0, 1000)
   const [pageNumber, setPageNumber] = useState(0)
 
   const userPerPage = 4
 
   const pageVisited = pageNumber * userPerPage
 
-  const pageCount = Math.ceil(newData.length / userPerPage)
+  const pageCount = Math.ceil(featureProducts.length / userPerPage)
 
-  function search(newData: any) {
-    return newData.filter((elem: any) => {
+  function search(featureProducts: any) {
+    return featureProducts.filter((elem: any) => {
       return searchParam.some((newElem: any) => {
         return (
           elem[newElem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
@@ -51,11 +51,15 @@ const FeatureProducts = () => {
     })
   }
 
-  const displayUsers = search(newData)
+  const displayUsers = search(featureProducts)
     .slice(pageVisited, pageVisited + userPerPage)
     .map((elem: any, index: number) => {
       return (
-        <NavLink key={index} to={`/singleProduct/${elem.id}`}>
+        <NavLink
+          className="linkStyle"
+          key={index}
+          to={`/singleProduct/${elem.id}`}
+        >
           <PetsMap>
             <PetsPara>Name: {elem.name}</PetsPara>
             <PetsMapImgContainer>
@@ -89,6 +93,9 @@ const FeatureProducts = () => {
             <Para>shop by pet,breeds or pet's on sale!</Para>
             <SearchInput
               type="search"
+              // name="search-form"
+              // id="search-form"
+              // className="search-input"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="What are you looking for?"

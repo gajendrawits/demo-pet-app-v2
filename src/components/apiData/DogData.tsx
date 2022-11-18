@@ -25,9 +25,10 @@ const DisplayDogsData = ({ data, isLoading }: any) => {
               key={ind}
               to={`/singleProduct/${elem.id}`}
               style={{ listStyle: 'none' }}
+              className="linkStyle"
             >
               <PetsMap>
-                <PetsPara>{elem.name}</PetsPara>
+                <PetsPara>Name: {elem.name}</PetsPara>
                 <PetsMapImgContainer>
                   <PetMapImg src={elem.photoUrls} alt="" />
                 </PetsMapImgContainer>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useProductContext } from '../../context/productcontext'
 import { useCartContext } from '../../context/cartcontext'
 import styled from 'styled-components'
-import Footer from "../footer/Footer";
+import Footer from '../footer/Footer'
 
 const API = 'https://petstore.swagger.io/v2/pet'
 

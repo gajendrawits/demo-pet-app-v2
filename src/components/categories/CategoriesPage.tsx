@@ -1,25 +1,25 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import NavBar from "../navbar/NavBar";
-import Footer from "../footer/Footer";
-import Pets from "../data/Data";
-import { HTop } from "../../style/HomePageStyle";
-import { MainCategoriesDiv } from "../../style/CategoriesPageStyle";
-import { InnerCategoriesDiv } from "../../style/CategoriesPageStyle";
-import { PetsNew } from "../../style/CategoriesPageStyle";
-import { PetsCatePara } from "../../style/CategoriesPageStyle";
-import { PetImg } from "../../style/CategoriesPageStyle";
-import { PetsImgContainer } from "../../style/CategoriesPageStyle";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import NavBar from '../navbar/NavBar'
+import Footer from '../footer/Footer'
+import Pets from '../data/Data'
+import { HTop } from '../../style/HomePageStyle'
+import { MainCategoriesDiv } from '../../style/CategoriesPageStyle'
+import { InnerCategoriesDiv } from '../../style/CategoriesPageStyle'
+import { PetsNew } from '../../style/CategoriesPageStyle'
+import { PetsCatePara } from '../../style/CategoriesPageStyle'
+import { PetImg } from '../../style/CategoriesPageStyle'
+import { PetsImgContainer } from '../../style/CategoriesPageStyle'
 
 const CategoriesPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const TempNav = (id: number) => {
     Pets.forEach((elem, ind: number) => {
       if (id === ind++) {
-        navigate(elem.nav);
+        navigate(elem.nav)
       }
-    });
-  };
+    })
+  }
   return (
     <>
       <NavBar />
@@ -34,13 +34,13 @@ const CategoriesPage = () => {
                   <PetImg src={elem.petImg} alt="" />
                 </PetsImgContainer>
               </PetsNew>
-            );
+            )
           })}
         </InnerCategoriesDiv>
       </MainCategoriesDiv>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default CategoriesPage;
+export default CategoriesPage

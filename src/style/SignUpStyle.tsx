@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormWraper = styled.div`
-  /* border: 1px solid black; */
+  /* border: 2px solid black; */
   height: 40vh;
 `;
 export const SignUpForm = styled.form`

@@ -99,7 +99,18 @@ export const ProductAvatar = styled.div`
   align-items: center;
   width: 8vw;
   height: 16vh;
+  @media (max-width: 820px) {
+    width: 18vw;
+    height: 15vh;
+  }
 `
+export const AvatarImg = styled.img`
+  width: '6vw';
+  height: '14vh';
+  margin: 'auto';
+  border-radius: '50px';
+`
+
 export const ProductDown = styled.div`
   margin: auto;
   width: 80%;

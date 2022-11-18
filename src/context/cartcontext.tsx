@@ -4,7 +4,6 @@ import reducer from '../reducer/cartReducer'
 const CartContext = createContext<any>('defaultValue')
 const intialState = {
   cart: [],
-  // total_item: '',
 }
 const CartProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, intialState)

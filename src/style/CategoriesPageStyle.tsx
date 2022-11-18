@@ -3,8 +3,12 @@ import styled from 'styled-components'
 export const MainCategoriesDiv = styled.div`
   height: 80vh;
   width: 100%;
+  /* border: 2px solid black; */
+  /* margin: auto; */
 `
 export const InnerCategoriesDiv = styled.div`
+  /* border: 2px solid black; */
+  /* margin: auto; */
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto auto auto auto;
@@ -25,14 +29,22 @@ export const PetsNew = styled.div`
   height: 192px;
   background-color: rgb(255, 240, 225);
   border-radius: 24px;
+  cursor: pointer;
+  @media (max-width: 820px) {
+    width: 17vw;
+  }
 `
 export const PetsStatus = styled.p`
   overflow: hidden;
   white-space: pre-wrap;
+  /* border: 2px solid black; */
   padding-top: 6px;
-  width: 100px;
+  padding-bottom: 10px;
+  white-space: pre-wrap;
+  max-width: 174px;
+  min-width: 75px;
   height: 18px;
-  margin: 0px;
+  margin: auto;
   color: green;
   font-family: 'Red Hat Display';
   font-weight: 500;
@@ -61,6 +73,7 @@ export const PetsCatePara = styled.p`
 `
 export const PetsPara = styled.p`
   overflow: hidden;
+  white-space: pre-wrap;
   /* border: 2px solid black; */
   padding-top: 6px;
   padding-bottom: 10px;
@@ -83,6 +96,10 @@ export const PetsPara = styled.p`
 export const PetImg = styled.img`
   width: 120px;
   margin-top: 12px;
+  :hover {
+    transform: scale(1.1);
+    transition: 1s;
+  }
 `
 export const PetsImgContainer = styled.div``
 export const BuyNow = styled.div`

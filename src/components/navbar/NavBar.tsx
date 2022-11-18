@@ -17,7 +17,7 @@ const NavBar = () => {
   const { cart } = useCartContext()
   return (
     <NavDiv>
-      <LogoDiv>
+      <LogoDiv onClick={() => navigate('/home')}>
         <LogoImg
           src="https://assets.api.uizard.io/api/cdn/stream/a29408e8-9bf7-4cfd-8bbc-573468ba8657.png"
           alt=""
@@ -30,7 +30,10 @@ const NavBar = () => {
         <NavText>CONTACT</NavText>
       </TextWrap>
       <AllImg>
-        <IoMdAddCircleOutline style={{ fontSize: '2vw', cursor: 'pointer' }} />
+        <IoMdAddCircleOutline
+          onClick={() => navigate('/addPets')}
+          style={{ fontSize: '2vw', cursor: 'pointer' }}
+        />
         <FaShoppingCart
           onClick={() => navigate('/cart')}
           style={{ fontSize: '2vw', cursor: 'pointer' }}

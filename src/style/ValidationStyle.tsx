@@ -2,16 +2,19 @@ import styled from 'styled-components'
 
 export const MainDiv = styled.div`
   width: 30vw;
+  /* border: 2px solid black; */
+  /* margin-top: 50px; */
   height: 79vh;
   border-radius: 20px;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `
 export const Container = styled.div`
+  margin-top: 300px;
   /* border: 2px solid black; */
   margin: auto;
   display: flex;
-  height: 700px;
+  height: 100vh;
   justify-content: center;
   align-items: center;
 `
